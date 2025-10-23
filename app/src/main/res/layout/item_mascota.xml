@@ -48,6 +48,7 @@
                 android:layout_height="wrap_content"
                 android:text="Editar"
                 android:textSize="14sp"
+                android:textColor="#F44336"
                 style="?android:attr/borderlessButtonStyle" />
 
             <Button
