@@ -3,15 +3,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@color/background">
 
     <!-- Título -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Agregar Nueva Mascota"
-        android:textSize="24sp"
+        android:textSize="28sp"
         android:textStyle="bold"
+        android:textColor="@color/primary"
         android:layout_marginBottom="24dp" />
 
     <!-- Campo: Nombre -->
@@ -28,6 +30,24 @@
             android:inputType="textCapWords" />
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Campo: Tipo -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tipo de mascota"
+        android:textSize="14sp"
+        android:textColor="@color/text_secondary"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp" />
+
+    <Spinner
+        android:id="@+id/spinnerTipo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="56dp"
+        android:background="@drawable/spinner_background"
+        android:padding="12dp" />
 
     <!-- Campo: Edad -->
     <com.google.android.material.textfield.TextInputLayout
@@ -50,7 +70,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:gravity="end">
 
         <Button
@@ -58,7 +78,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Cancelar"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="12dp"
+            android:textColor="@color/text_secondary"
             style="?android:attr/buttonBarButtonStyle" />
 
         <Button
@@ -66,7 +87,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Guardar"
-            android:backgroundTint="#4CAF50" />
+            android:paddingStart="32dp"
+            android:paddingEnd="32dp"
+            android:backgroundTint="@color/accent" />
 
     </LinearLayout>
 

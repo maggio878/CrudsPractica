@@ -2,14 +2,46 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <!-- Título superior -->
+    <LinearLayout
+        android:id="@+id/headerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/primary"
+        android:padding="20dp"
+        android:elevation="4dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🐾 Mis Mascotas"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gestiona tu registro de mascotas"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:alpha="0.9"
+            android:layout_marginTop="4dp" />
+
+    </LinearLayout>
 
     <!-- Lista de mascotas -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewMascotas"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="8dp" />
+        android:layout_below="@id/headerLayout"
+        android:padding="12dp"
+        android:clipToPadding="false" />
 
     <!-- Botón flotante para agregar -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -18,20 +50,46 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_margin="16dp"
+        android:layout_margin="24dp"
         android:src="@android:drawable/ic_input_add"
-        app:tint="@android:color/white" />
+        app:tint="@android:color/white"
+        app:backgroundTint="@color/accent"
+        app:elevation="6dp" />
 
     <!-- Mensaje cuando no hay mascotas -->
-    <TextView
+    <LinearLayout
         android:id="@+id/tvVacio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="No hay mascotas\nToca + para agregar"
-        android:textSize="18sp"
-        android:textColor="#999"
+        android:orientation="vertical"
         android:gravity="center"
-        android:visibility="gone" />
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🐾"
+            android:textSize="64sp"
+            android:alpha="0.3" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No hay mascotas registradas"
+            android:textSize="18sp"
+            android:textColor="@color/text_secondary"
+            android:layout_marginTop="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Toca el botón + para agregar una"
+            android:textSize="14sp"
+            android:textColor="@color/text_secondary"
+            android:alpha="0.7"
+            android:layout_marginTop="8dp" />
+
+    </LinearLayout>
 
 </RelativeLayout>
