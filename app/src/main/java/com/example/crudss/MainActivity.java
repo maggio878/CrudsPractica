@@ -1,12 +1,11 @@
 package com.example.crudss;
 
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,8 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.example.crudss.MascotasController;
-import com.example.crudss.Mascota;
 
 import java.util.ArrayList;
 
@@ -26,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private MascotasController controller;
     private ArrayList<Mascota> listaMascotas;
     private FloatingActionButton fabAgregar;
-    private TextView tvVacio;
+    private LinearLayout tvVacio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        // Recargar cuando volvemos a esta pantalla
         cargarMascotas();
     }
 
@@ -84,7 +80,6 @@ public class MainActivity extends AppCompatActivity {
         listaMascotas = controller.obtenerMascotas();
         adapter.actualizarLista(listaMascotas);
 
-        // Mostrar mensaje si está vacío
         if (listaMascotas.isEmpty()) {
             tvVacio.setVisibility(View.VISIBLE);
             recyclerView.setVisibility(View.GONE);
@@ -99,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("id", mascota.getId());
         intent.putExtra("nombre", mascota.getNombre());
         intent.putExtra("edad", mascota.getEdad());
+        intent.putExtra("tipo", mascota.getTipo());
         startActivity(intent);
     }
 
