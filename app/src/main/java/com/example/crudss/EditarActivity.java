@@ -2,18 +2,19 @@ package com.example.crudss;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputEditText;
-import com.example.crudss.MascotasController;
-import com.example.crudss.Mascota;
 
 public class EditarActivity extends AppCompatActivity {
 
     private TextInputEditText etNombre, etEdad;
+    private Spinner spinnerTipo;
     private Button btnActualizar, btnCancelar;
     private MascotasController controller;
     private long idMascota;
@@ -26,8 +27,15 @@ public class EditarActivity extends AppCompatActivity {
         // Inicializar vistas
         etNombre = findViewById(R.id.etNombre);
         etEdad = findViewById(R.id.etEdad);
+        spinnerTipo = findViewById(R.id.spinnerTipo);
         btnActualizar = findViewById(R.id.btnActualizar);
         btnCancelar = findViewById(R.id.btnCancelar);
+
+        // Configurar Spinner
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.tipos_mascotas, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerTipo.setAdapter(adapter);
 
         // Inicializar controlador
         controller = new MascotasController(this);
@@ -36,10 +44,17 @@ public class EditarActivity extends AppCompatActivity {
         idMascota = getIntent().getLongExtra("id", -1);
         String nombre = getIntent().getStringExtra("nombre");
         int edad = getIntent().getIntExtra("edad", 0);
+        String tipo = getIntent().getStringExtra("tipo");
 
         // Rellenar campos con datos actuales
         etNombre.setText(nombre);
         etEdad.setText(String.valueOf(edad));
+
+        // Seleccionar el tipo correcto en el Spinner
+        if (tipo != null) {
+            int spinnerPosition = adapter.getPosition(tipo);
+            spinnerTipo.setSelection(spinnerPosition);
+        }
 
         // Botón Actualizar
         btnActualizar.setOnClickListener(new View.OnClickListener() {
@@ -61,6 +76,7 @@ public class EditarActivity extends AppCompatActivity {
     private void actualizarMascota() {
         String nombre = etNombre.getText().toString().trim();
         String edadStr = etEdad.getText().toString().trim();
+        String tipo = spinnerTipo.getSelectedItem().toString();
 
         // Validaciones
         if (nombre.isEmpty()) {
@@ -90,13 +106,13 @@ public class EditarActivity extends AppCompatActivity {
         }
 
         // Actualizar mascota
-        Mascota mascotaActualizada = new Mascota(nombre, edad, idMascota);
+        Mascota mascotaActualizada = new Mascota(nombre, edad, tipo, idMascota);
         int filasAfectadas = controller.guardarCambios(mascotaActualizada);
 
         if (filasAfectadas > 0) {
             Toast.makeText(this, "Mascota actualizada correctamente",
                     Toast.LENGTH_SHORT).show();
-            finish(); // Volver a MainActivity
+            finish();
         } else {
             Toast.makeText(this, "Error al actualizar mascota",
                     Toast.LENGTH_SHORT).show();

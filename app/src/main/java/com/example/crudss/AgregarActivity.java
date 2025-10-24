@@ -2,18 +2,19 @@ package com.example.crudss;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputEditText;
-import com.example.crudss.MascotasController;
-import com.example.crudss.Mascota;
 
 public class AgregarActivity extends AppCompatActivity {
 
     private TextInputEditText etNombre, etEdad;
+    private Spinner spinnerTipo;
     private Button btnGuardar, btnCancelar;
     private MascotasController controller;
 
@@ -25,8 +26,15 @@ public class AgregarActivity extends AppCompatActivity {
         // Inicializar vistas
         etNombre = findViewById(R.id.etNombre);
         etEdad = findViewById(R.id.etEdad);
+        spinnerTipo = findViewById(R.id.spinnerTipo);
         btnGuardar = findViewById(R.id.btnGuardar);
         btnCancelar = findViewById(R.id.btnCancelar);
+
+        // Configurar Spinner
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.tipos_mascotas, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerTipo.setAdapter(adapter);
 
         // Inicializar controlador
         controller = new MascotasController(this);
@@ -51,6 +59,7 @@ public class AgregarActivity extends AppCompatActivity {
     private void guardarMascota() {
         String nombre = etNombre.getText().toString().trim();
         String edadStr = etEdad.getText().toString().trim();
+        String tipo = spinnerTipo.getSelectedItem().toString();
 
         // Validaciones
         if (nombre.isEmpty()) {
@@ -80,13 +89,13 @@ public class AgregarActivity extends AppCompatActivity {
         }
 
         // Crear y guardar mascota
-        Mascota nuevaMascota = new Mascota(nombre, edad);
+        Mascota nuevaMascota = new Mascota(nombre, edad, tipo);
         long id = controller.nuevaMascota(nuevaMascota);
 
         if (id > 0) {
             Toast.makeText(this, "Mascota agregada correctamente",
                     Toast.LENGTH_SHORT).show();
-            finish(); // Volver a MainActivity
+            finish();
         } else {
             Toast.makeText(this, "Error al agregar mascota",
                     Toast.LENGTH_SHORT).show();
