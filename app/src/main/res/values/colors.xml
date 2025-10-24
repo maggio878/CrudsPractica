@@ -2,4 +2,35 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Colores principales -->
+    <color name="primary">#6366F1</color>
+    <color name="primary_dark">#4F46E5</color>
+    <color name="accent">#10B981</color>
+
+    <!-- Colores para tipos de mascotas -->
+    <color name="perro">#F59E0B</color>
+    <color name="gato">#8B5CF6</color>
+    <color name="ave">#3B82F6</color>
+    <color name="pez">#06B6D4</color>
+    <color name="hamster">#EC4899</color>
+    <color name="conejo">#A78BFA</color>
+    <color name="otro">#6B7280</color>
+
+    <!-- Colores según edad -->
+    <color name="cachorro">#34D399</color>
+    <color name="adulto">#60A5FA</color>
+    <color name="senior">#F59E0B</color>
+
+    <!-- Colores de fondo -->
+    <color name="background">#F9FAFB</color>
+    <color name="card_background">#FFFFFF</color>
+
+    <!-- Colores de texto -->
+    <color name="text_primary">#1F2937</color>
+    <color name="text_secondary">#6B7280</color>
+
+    <!-- Colores de botones -->
+    <color name="button_edit">#3B82F6</color>
+    <color name="button_delete">#EF4444</color>
 </resources>

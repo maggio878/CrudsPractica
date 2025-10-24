@@ -1,3 +1,14 @@
 <resources>
-    <string name="app_name">crudss</string>
+    <string name="app_name">Mis Mascotas</string>
+
+    <!-- Array de tipos de mascotas -->
+    <string-array name="tipos_mascotas">
+        <item>Perro</item>
+        <item>Gato</item>
+        <item>Ave</item>
+        <item>Pez</item>
+        <item>Hámster</item>
+        <item>Conejo</item>
+        <item>Otro</item>
+    </string-array>
 </resources>

@@ -2,63 +2,120 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardMascota"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    app:cardCornerRadius="8dp"
-    app:cardElevation="4dp">
+    app:cardCornerRadius="12dp"
+    app:cardElevation="3dp"
+    android:background="@color/card_background">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:orientation="horizontal">
 
-        <!-- Nombre de la mascota -->
-        <TextView
-            android:id="@+id/tvNombre"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nombre"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="#000" />
+        <!-- Barra de color lateral -->
+        <View
+            android:id="@+id/colorBar"
+            android:layout_width="6dp"
+            android:layout_height="match_parent"
+            android:background="@color/primary" />
 
-        <!-- Edad de la mascota -->
-        <TextView
-            android:id="@+id/tvEdad"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="Edad: 0 años"
-            android:textSize="16sp"
-            android:textColor="#666" />
-
-        <!-- Botones de acción -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="12dp"
-            android:gravity="end">
+            android:orientation="vertical"
+            android:padding="16dp">
 
-            <Button
-                android:id="@+id/btnEditar"
+            <!-- Fila superior: Icono y nombre -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <!-- Icono de mascota -->
+                <TextView
+                    android:id="@+id/tvIcono"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:text="🐕"
+                    android:textSize="32sp"
+                    android:gravity="center"
+                    android:background="@drawable/icon_background"
+                    android:layout_marginEnd="12dp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <!-- Nombre de la mascota -->
+                    <TextView
+                        android:id="@+id/tvNombre"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nombre"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_primary" />
+
+                    <!-- Tipo de mascota -->
+                    <TextView
+                        android:id="@+id/tvTipo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tipo"
+                        android:textSize="14sp"
+                        android:textColor="@color/text_secondary"
+                        android:layout_marginTop="2dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Edad de la mascota -->
+            <TextView
+                android:id="@+id/tvEdad"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Editar"
-                android:textSize="14sp"
-                android:textColor="#F44336"
-                style="?android:attr/borderlessButtonStyle" />
+                android:layout_marginTop="12dp"
+                android:text="0 años"
+                android:textSize="15sp"
+                android:textColor="@color/text_secondary"
+                android:drawablePadding="6dp"
+                android:drawableStart="@android:drawable/ic_menu_recent_history" />
 
-            <Button
-                android:id="@+id/btnEliminar"
-                android:layout_width="wrap_content"
+            <!-- Botones de acción -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Eliminar"
-                android:textSize="14sp"
-                android:textColor="#F44336"
-                style="?android:attr/borderlessButtonStyle" />
+                android:orientation="horizontal"
+                android:layout_marginTop="16dp"
+                android:gravity="end">
+
+                <Button
+                    android:id="@+id/btnEditar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Editar"
+                    android:textSize="14sp"
+                    android:textColor="@color/button_edit"
+                    android:layout_marginEnd="8dp"
+                    style="?android:attr/borderlessButtonStyle" />
+
+                <Button
+                    android:id="@+id/btnEliminar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Eliminar"
+                    android:textSize="14sp"
+                    android:textColor="@color/button_delete"
+                    style="?android:attr/borderlessButtonStyle" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
